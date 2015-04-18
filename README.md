@@ -1,2 +1,1 @@
-# kata-tdd-1-quocduong
-A code kata
+kata http://osherove.com/tdd-kata-1
