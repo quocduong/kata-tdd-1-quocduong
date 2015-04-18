@@ -8,7 +8,7 @@ namespace CodeKata
 {
     public class Calculator
     {
-        private const string _delimeterLine_indicator = "//";
+        private const string DelimeterLineIndicator = "//";
         private static string _delimeter = ",";
 
         public static int Add(string numbers)
@@ -36,27 +36,21 @@ namespace CodeKata
 
         private static string GetNumbers(string numbers)
         {
-            string[] numParts = numbers.Split(char.Parse("\n"));
+            var numParts = numbers.Split(char.Parse("\n"));
             numbers = numParts[1];
             return numbers;
         }
 
         private static bool HasdelimeterLine(string numbers)
         {
-            return numbers.StartsWith(_delimeterLine_indicator);
+            return numbers.StartsWith(DelimeterLineIndicator);
         }
 
         private static int HandleMultipleNumber(string numbers)
         {
-            string[] nums = numbers.Split(_delimeter.ToCharArray());
+            var nums = numbers.Split(_delimeter.ToCharArray());
 
-            var total = 0;
-            foreach (var num in nums)
-            {
-                total += HandleOneNumber(num);
-            }
-            return total;
-            return HandleOneNumber(nums[0]) + HandleOneNumber(nums[1]);
+            return nums.Sum(num => HandleOneNumber(num));
         }
 
         private static bool HasMultipleNumbers(string numbers)
