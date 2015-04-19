@@ -61,5 +61,13 @@ namespace CodeKata.Test
             Assert.AreEqual(3, result);
             Console.Write(result);
         }
+
+        [Test]
+        public void Add_IgnoredThousand_ReturnNumber()
+        {
+            int result = Calculator.Add("2+1001");
+            
+            Assert.AreEqual(2, result);
+        }
     }
 }

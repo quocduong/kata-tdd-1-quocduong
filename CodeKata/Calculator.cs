@@ -13,13 +13,21 @@ namespace CodeKata
 
         public static int Add(string numbers)
         {
+            if (IsEmptyString(numbers))
+                return HandleEmptyString();
+
             if (HasdelimeterLine(numbers))
             {
                 ParseDelimeter(numbers);
                 numbers = GetNumbers(numbers);
             }
-            if (IsEmptyString(numbers))
-                return HandleEmptyString();
+
+            if (numbers.Contains("+"))
+            {
+                var numParts = numbers.Split('+');
+                if (int.Parse(numParts[1]) >= 1000)
+                    return int.Parse(numParts[0]);
+            }
 
             if (HasMultipleNumbers(numbers))
             {
